@@ -1,0 +1,9 @@
+{"name": "njax-socket", "version": "0.0.1", "private": true, "scripts": {
+
+}, "dependencies": {
+    "async": "*",
+    "underscore": "*",
+    "socket.io":"*",
+    "njax-app": "git+ssh://git@github.com:schematical/njax-app#master"
+
+}}
