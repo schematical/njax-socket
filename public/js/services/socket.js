@@ -1,14 +1,14 @@
-var NJaxSocketService = angular.module('njax.socket.service', []);
+var NJaxSocketService = angular.module('njax.socket.service', ['njax.bootstrap']);
 NJaxSocketService.factory(
     'NJaxSocketService',
     [
-        '$rootScope',
-        function($rootScope){
+		'NJaxBootstrap',
+        function(NJaxBootstrap){
             return {
                 init:function($rootScope){
-                    var socket = io.connect('http://' + window.njax_socket_www_url);
+                    var socket = io.connect('http://' + NJaxBootstrap.socket_server.host);
                     socket.on('say_hello', function(data){
-                        socket.emit('greeting', { user:window.njax_bootstrap.user });
+                        socket.emit('greeting', { user:NJaxBootstrap.user });
                     });
                     socket.on('event', function(event){
                         $rootScope.$emit(event.event, event.data);
